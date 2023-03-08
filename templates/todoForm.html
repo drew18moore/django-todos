@@ -4,7 +4,7 @@
 <h1 class="todo-heading">Create New Todo</h1>
 <form method="POST" action="" class="todo-form">
   {% csrf_token %}
-  <input type="text" name="todo-body" placeholder="Todo">
+  {{ form }}
   <button type="submit" name="submit">Add Todo</button>
 </form>
 
