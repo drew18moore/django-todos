@@ -9,6 +9,10 @@
   <link rel="stylesheet" href={% static "css/index.css" %}>
 </head>
 <body>
-  <h1>Home page</h1>
+  <header>
+    <nav><span class="logo">TodoApp</span></nav>
+  </header>
+  {% block content %}
+  {% endblock content %}
 </body>
 </html>
