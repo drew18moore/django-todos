@@ -1,22 +1,28 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TodoApp</title>
-  <link rel="stylesheet" href={% static "css/index.css" %}>
-</head>
-<body>
-  <header>
-    <nav><span class="logo">TodoApp</span></nav>
-  </header>
-  {% block content %}
-  {% endblock content %}
-
-  {% for todo in todos %}
-    <h2>{{ todo.body }}</h2>
-  {% endfor %}
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp</title>
+    <link rel="stylesheet" href={% static "css/index.css" %}>
+  </head>
+  <body>
+    <header>
+      <nav><span class="logo">TodoApp</span></nav>
+    </header>
+    {% block content %} {% endblock content %}
+    <h1 class="todos-heading">All Todos</h1>
+    <div class="todos">
+      {% for todo in todos %}
+      <div class="todo">
+        <h2>{{ todo.body }}</h2>
+        <div class="buttons">
+          <button>Delete</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
 </html>
