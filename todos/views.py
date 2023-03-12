@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import TodoForm
@@ -12,13 +12,7 @@ def index(request):
           body = request.POST["body"]
           newTodo = Todo.objects.create(body=body)
           newTodo.save()
-    else:
-        form = TodoForm()
-    return render(request, "todoForm.html", { "form": form })
-
-def newTodo(request):
-    print("NEW TODO")
-    body = request.POST["body"]
-    newTodo = Todo.objects.create(body=body)
-    newTodo.save()
-    return HttpResponse("New todo created")
+          return redirect("index")  # Prevents form from resubmitting on refresh
+    form = TodoForm()
+    allTodos = Todo.objects.all()
+    return render(request, "todoForm.html", { "form": form, "todos": allTodos })

@@ -14,5 +14,9 @@
   </header>
   {% block content %}
   {% endblock content %}
+
+  {% for todo in todos %}
+    <h2>{{ todo.body }}</h2>
+  {% endfor %}
 </body>
 </html>
