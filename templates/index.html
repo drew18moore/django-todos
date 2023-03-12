@@ -19,7 +19,10 @@
       <div class="todo">
         <h2>{{ todo.body }}</h2>
         <div class="buttons">
-          <button>Delete</button>
+          <form action="{%  url 'delete_todo' todo.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
         </div>
       </div>
       {% endfor %}

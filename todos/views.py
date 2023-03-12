@@ -15,4 +15,9 @@ def index(request):
           return redirect("index")  # Prevents form from resubmitting on refresh
     form = TodoForm()
     allTodos = Todo.objects.all()
-    return render(request, "todoForm.html", { "form": form, "todos": allTodos })
+    return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
+
+def delete_todo(request, todo_id):
+   todo = Todo.objects.get(id=todo_id)
+   todo.delete()
+   return redirect("index")
