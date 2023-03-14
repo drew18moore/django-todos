@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h1 class="todo-form-heading">Create New Todo</h1>
+{% comment %} <h1 class="todo-form-heading">Create New Todo</h1> {% endcomment %}
 <form method="POST" action="" class="todo-form">
   {% csrf_token %}
   {{ form }}
