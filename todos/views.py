@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import *
 from .forms import TodoForm, LoginForm, RegisterForm
 
 # Create your views here.
+@login_required(login_url="/login")
 def index(request):
     if request.method == "POST":
         form = TodoForm(request.POST)
