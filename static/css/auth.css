@@ -9,7 +9,7 @@ h1 {
   text-align: center;
 }
 
-.login-form {
+.auth-form {
   max-width: 500px;
   display: grid;
   gap: 1rem;
@@ -21,7 +21,7 @@ h1 {
   padding-inline: 10px;
 }
 
-.login-form input {
+.auth-form input {
   border: 2px solid gray;
   height: 3rem;
   font-size: 1rem;
@@ -30,7 +30,7 @@ h1 {
   user-select: none;
 }
 
-.login-form button {
+.auth-form button {
   border: 2px solid gray;
   height: 3rem;
   font-size: 1rem;

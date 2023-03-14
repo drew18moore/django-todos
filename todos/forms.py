@@ -9,6 +9,28 @@ class TodoForm(forms.Form):
         )
     )
 
+class RegisterForm(forms.Form):
+    username = forms.CharField(
+        max_length=64,
+        label='',
+        widget=forms.TextInput(
+            attrs={"placeholder": "username"}
+        )
+    )
+    password = forms.CharField(
+        max_length=64,
+        label='',
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "password"}
+        )
+    )
+    repeat_password = forms.CharField(
+        max_length=64,
+        label='',
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "password"}
+        )
+    )
 
 class LoginForm(forms.Form):
     username = forms.CharField(

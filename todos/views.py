@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
-from .forms import TodoForm, LoginForm
+from .forms import TodoForm, LoginForm, RegisterForm
 
 # Create your views here.
 def index(request):
@@ -16,6 +16,12 @@ def index(request):
     form = TodoForm()
     allTodos = Todo.objects.all()
     return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
+
+def register(request):
+   if request.method == "POST":
+      return redirect("register")
+   form = RegisterForm()
+   return render(request, "register.html", { "form": form })
 
 def login(request):
    if request.method == "POST":
