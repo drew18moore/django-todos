@@ -14,11 +14,22 @@ header {
 nav {
   height: fit-content;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+nav button {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
 }
 
 .logo {
   font-size: 2rem;
-  padding: 1rem;
 }
 
 /* todoForm */

@@ -10,7 +10,13 @@
   </head>
   <body>
     <header>
-      <nav><span class="logo">TodoApp</span></nav>
+      <nav>
+        <span class="logo">TodoApp</span>
+        <form action="/logout" method="POST">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+      </nav>
     </header>
     {% block content %} {% endblock content %}
     <h1 class="todos-heading">All Todos</h1>

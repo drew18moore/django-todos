@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from .models import *
 from .forms import TodoForm, LoginForm, RegisterForm
@@ -14,6 +14,7 @@ def index(request):
             newTodo = Todo.objects.create(body=body)
             newTodo.save()
             return redirect("index")  # Prevents form from resubmitting on refresh
+    print(request.user)
     form = TodoForm()
     allTodos = Todo.objects.all()
     return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
@@ -38,6 +39,12 @@ def login_view(request):
         return redirect("/")
     form = LoginForm()
     return render(request, "login.html", { "form": form })
+
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("/login")
+    return HttpResponse({"message": "logout_view"})
 
 def delete_todo(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
