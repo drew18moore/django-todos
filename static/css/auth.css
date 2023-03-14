@@ -38,3 +38,7 @@ h1 {
   cursor: pointer;
   user-select: none;
 }
+
+.auth-form p {
+  text-align: center;
+}
