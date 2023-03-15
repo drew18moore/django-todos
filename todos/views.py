@@ -14,7 +14,7 @@ def index(request):
 
         if form.is_valid():
             body = request.POST["body"]
-            newTodo = Todo.objects.create(body=body)
+            newTodo = Todo.objects.create(author=request.user, body=body)
             newTodo.save()
             return redirect("index")  # Prevents form from resubmitting on refresh
     print(request.user)
