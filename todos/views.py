@@ -22,35 +22,31 @@ def index(request):
     allTodos = Todo.objects.filter(author=request.user)
     return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
 
-def register(request):
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            repeat_password = form.cleaned_data.get("repeat_password")
-            if password != repeat_password:
-                pass
-            else:
-                user = User.objects.create_user(username=username, password=password)
-                login(request, user)
-                return redirect("/")
-    form = RegisterForm()
+def register_view(request):
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        repeat_password = form.cleaned_data.get("repeat_password")
+        if password != repeat_password:
+            pass
+        else:
+            user = User.objects.create_user(username=username, password=password)
+            login(request, user)
+            return redirect("/")
     return render(request, "register.html", { "form": form })
 
 def login_view(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        print(username, password)
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password)
-        print(user)
         if user is None:
             form = LoginForm()
             return render(request, "login.html", { "form": form, "error": "Invalid username or password" })
         login(request, user)
         return redirect("/")
-    form = LoginForm()
     return render(request, "login.html", { "form": form })
 
 def logout_view(request):
