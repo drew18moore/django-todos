@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoApp</title>
     <link rel="stylesheet" href={% static "css/index.css" %}>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src={% static "js/checkTodo.js" %} type="module"></script>
   </head>
   <body>
     <header>
@@ -22,15 +24,21 @@
     <h1 class="todos-heading">All Todos</h1>
     <div class="todos">
       {% for todo in todos %}
-      <div class="todo">
-        <h2>{{ todo.body }}</h2>
-        <div class="buttons">
-          <form action="{%  url 'delete_todo' todo.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-          </form>
+        <div class="todo">
+          <div class="left-align">
+            <form action="{% url 'check_todo' todo.id %}" method="POST">
+              {% csrf_token %}
+              <input type="checkbox" id="{{ todo.id }}" class="checkbox">
+            </form>
+            <h2>{{ todo.body }}</h2>
+          </div>
+          <div class="buttons">
+            <form action="{%  url 'delete_todo' todo.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+            </form>
+          </div>
         </div>
-      </div>
       {% endfor %}
     </div>
   </body>

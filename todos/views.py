@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import *
 from .forms import TodoForm, LoginForm, RegisterForm
 
@@ -58,3 +58,8 @@ def delete_todo(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.delete()
     return redirect("index")
+
+def check_todo(request, todo_id):
+    print("CHECKING")
+    print(todo_id)
+    return JsonResponse({"message": "success"})

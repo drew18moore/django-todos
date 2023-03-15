@@ -91,3 +91,16 @@ nav button {
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
+.todo .left-align {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo input[type="checkbox"] {
+  vertical-align: middle;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
