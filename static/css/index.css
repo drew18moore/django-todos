@@ -5,8 +5,20 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  background-image: url("/static/background.jpg");
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
 header {
-  background-color: crimson;
+  background: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   height: fit-content;
   color: white;
 }
@@ -79,14 +91,21 @@ nav button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: crimson;
+  background: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 1rem 2rem;
   border-radius: 5px;
 }
 
 .todo .buttons button {
-  background-color: white;
-  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
