@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 from django.http import HttpResponse
 from .models import *
 from .forms import TodoForm, LoginForm, RegisterForm
@@ -26,10 +27,12 @@ def register_view(request):
         repeat_password = form.cleaned_data.get("repeat_password")
         if password != repeat_password:
             return render(request, "register.html", { "form": form, "error": "Passwords do not match" })
-        else:
+        try:
             user = User.objects.create_user(username=username, password=password)
-            login(request, user)
-            return redirect("/")
+        except IntegrityError:
+            return render(request, "register.html", { "form": form, "error": "Username already exists" })
+        login(request, user)
+        return redirect("/")
     return render(request, "register.html", { "form": form })
 
 def login_view(request):
