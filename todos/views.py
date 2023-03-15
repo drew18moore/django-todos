@@ -9,16 +9,12 @@ from .forms import TodoForm, LoginForm, RegisterForm
 # Create your views here.
 @login_required(login_url="/login")
 def index(request):
-    if request.method == "POST":
-        form = TodoForm(request.POST)
-
-        if form.is_valid():
-            body = request.POST["body"]
-            newTodo = Todo.objects.create(author=request.user, body=body)
-            newTodo.save()
-            return redirect("index")  # Prevents form from resubmitting on refresh
-    print(request.user)
-    form = TodoForm()
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        body = form.cleaned_data.get("body")
+        newTodo = Todo.objects.create(author=request.user, body=body)
+        newTodo.save()
+        return redirect("index")  # Prevents form from resubmitting on refresh
     allTodos = Todo.objects.filter(author=request.user)
     return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
 
