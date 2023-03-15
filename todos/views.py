@@ -19,7 +19,7 @@ def index(request):
             return redirect("index")  # Prevents form from resubmitting on refresh
     print(request.user)
     form = TodoForm()
-    allTodos = Todo.objects.all()
+    allTodos = Todo.objects.filter(author=request.user)
     return render(request, "todoForm.html", { "form": form, "todos": allTodos[::-1] })
 
 def register(request):
