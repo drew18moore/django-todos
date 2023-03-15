@@ -25,7 +25,7 @@ def register_view(request):
         password = form.cleaned_data.get("password")
         repeat_password = form.cleaned_data.get("repeat_password")
         if password != repeat_password:
-            pass
+            return render(request, "register.html", { "form": form, "error": "Passwords do not match" })
         else:
             user = User.objects.create_user(username=username, password=password)
             login(request, user)
