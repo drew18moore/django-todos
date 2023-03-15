@@ -62,4 +62,10 @@ def delete_todo(request, todo_id):
 def check_todo(request, todo_id):
     print("CHECKING")
     print(todo_id)
+    todo = Todo.objects.get(id=todo_id)
+    if todo.is_checked:
+        todo.is_checked = False
+    else:
+        todo.is_checked = True
+    todo.save()
     return JsonResponse({"message": "success"})

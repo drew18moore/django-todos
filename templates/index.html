@@ -28,7 +28,7 @@
           <div class="left-align">
             <form action="{% url 'check_todo' todo.id %}" method="POST">
               {% csrf_token %}
-              <input type="checkbox" id="{{ todo.id }}" class="checkbox">
+              <input type="checkbox" id="{{ todo.id }}" class="checkbox" {% if todo.is_checked %}checked{% endif %}>
             </form>
             <h2>{{ todo.body }}</h2>
           </div>
