@@ -8,7 +8,7 @@
     <title>TodoApp</title>
     <link rel="stylesheet" href={% static "css/index.css" %}>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src={% static "js/checkTodo.js" %} type="module"></script>
+    <script src={% static "js/todo.js" %} type="module"></script>
   </head>
   <body>
     <header>
@@ -30,7 +30,7 @@
               {% csrf_token %}
               <input type="checkbox" id="{{ todo.id }}" class="checkbox" {% if todo.is_checked %}checked{% endif %}>
             </form>
-            <h2>{{ todo.body }}</h2>
+            <h2 class="todo-body">{{ todo.body }}</h2>
           </div>
           <div class="buttons">
             <form action="{%  url 'delete_todo' todo.id %}" method="post">

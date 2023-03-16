@@ -105,6 +105,21 @@ nav button {
   border-radius: 5px;
 }
 
+.todo-body {
+  font-size: 1.5rem;
+  width: 100%;
+  min-width: 100%;
+}
+
+.todo-body-input {
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid gray;
+  border-radius: 5px;
+  width: 100%;
+}
+
 .todo .buttons button {
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -120,6 +135,7 @@ nav button {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .todo input[type="checkbox"] {
