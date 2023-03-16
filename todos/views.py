@@ -59,9 +59,15 @@ def delete_todo(request, todo_id):
     todo.delete()
     return redirect("index")
 
+def edit_todo(request, todo_id):
+    print("EDIT", todo_id, request.POST.get("value"))
+    todo = Todo.objects.get(id=todo_id)
+    todo.body = request.POST.get("value")
+    todo.save()
+    return JsonResponse({"message": "success"})
+
 def check_todo(request, todo_id):
-    print("CHECKING")
-    print(todo_id)
+    print("CHECKING", todo_id)
     todo = Todo.objects.get(id=todo_id)
     if todo.is_checked:
         todo.is_checked = False

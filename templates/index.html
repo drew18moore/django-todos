@@ -30,7 +30,8 @@
               {% csrf_token %}
               <input type="checkbox" id="{{ todo.id }}" class="checkbox" {% if todo.is_checked %}checked{% endif %}>
             </form>
-            <h2 class="todo-body">{{ todo.body }}</h2>
+            {% csrf_token %}
+            <h2 class="todo-body" id="{{ todo.id }}">{{ todo.body }}</h2>
           </div>
           <div class="buttons">
             <form action="{%  url 'delete_todo' todo.id %}" method="post">
